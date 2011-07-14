@@ -1,0 +1,43 @@
+# French strings go here for Rails i18n
+fr:
+  field_hours_in_day: "Nombre d'heure dans une journée"
+  field_days_in_week: "Nombre de jour dans une semaine"
+  field_weeks_in_month: "Nombre de semaine dans un mois"
+  field_months_in_year: "Nombre de mois dans une année"
+
+  field_char_for_day: "Caractère pour une journée"
+  field_char_for_week: "Caractère pour une semaine"
+  field_char_for_month: "Caractère pour un mois"
+  field_char_for_year: "Caractère pour une année"
+
+  char_for_hour: "h"
+  char_for_day: "j"
+  char_for_week: "s"
+  char_for_month: "m"
+  char_for_year: "a"
+
+  hours: "heures"
+  hour: "heure"
+  days: "jours"
+  day: "jour"
+  weeks: "semaines"
+  week: "semaine"
+  months: "mois"
+  month: "mois"
+  years: "années"
+  year: "année"
+
+  field_estimated_time: "Heures par defaut"
+  field_estimated_default: "%{unit} par défaut"
+  field_time_entry_hours: "Temps passé"
+  
+  label_settings_unit_default: "Unité de temps par défaut"
+  label_estimated: "%{value} %{unit}"
+
+  label_calculated_spent_hours: Heures passées calculés
+  label_divergent_hours: Heures dépassées
+  label_remaining_hours: Heures restantes
+  label_spent_hours: Heures passées
+  
+  label_divergent_time: Temps dépassé
+  label_remaining_time: Temps restant

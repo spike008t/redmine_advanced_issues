@@ -1,0 +1,44 @@
+<p>
+	<label for="settings_hours_in_day"><%= l(:field_hours_in_day) %></label>
+	<%= text_field_tag 'settings[hours_in_day]', @settings['hours_in_day'], :size => 5, :maxlength => 5 %> <%= l(:hours) %>
+</p>
+<p>
+	<label for="settings_char_for_day"><%= l(:field_char_for_day) %></label>
+	<%= text_field_tag 'settings[char_for_day]', @settings['char_for_day'], :size => 1, :maxlength => 1 %>
+</p>
+<p>
+	<label for="settings_days_in_week"><%= l(:field_days_in_week) %></label>
+	<%= text_field_tag 'settings[days_in_week]', @settings['days_in_week'] , :size => 5, :maxlength => 5 %> <%= l(:days) %>
+</p>
+<p>
+	<label for="settings_char_for_week"><%= l(:field_char_for_week) %></label>
+	<%= text_field_tag 'settings[char_for_week]', @settings['char_for_week'], :size => 1, :maxlength => 1 %>
+</p>
+<p>
+	<label for="settings_weeks_in_month"><%= l(:field_weeks_in_month) %></label>
+	<%= text_field_tag 'settings[weeks_in_month]', @settings['weeks_in_month'], :size => 5, :maxlength => 5  %> <%= l(:weeks) %>
+</p>
+<p>
+	<label for="settings_char_for_month"><%= l(:field_char_for_month) %></label>
+	<%= text_field_tag 'settings[char_for_month]', @settings['char_for_month'], :size => 1, :maxlength => 1 %>
+</p>
+<p>
+	<label for="settings_months_in_year"><%= l(:field_months_in_year) %></label>
+	<%= text_field_tag 'settings[months_in_year]', @settings['months_in_year'], :size => 5, :maxlength => 5  %> <%= l(:months) %>
+</p>
+<p>
+	<label for="settings_char_for_year"><%= l(:field_char_for_year) %></label>
+	<%= text_field_tag 'settings[char_for_year]', @settings['char_for_year'], :size => 1, :maxlength => 1 %>
+</p>
+<p>
+  <label for="settings_unit_default"><%= l(:label_settings_unit_default) %></label>
+  <%= select_tag('settings[default_unit]',
+                 options_for_select({
+                                      l(:hour) => 'hours',
+                                      l(:day) => 'days',
+                                      l(:week) => 'weeks',
+                                      l(:month) => 'months',
+                                      l(:year) => 'years' }, @settings['default_unit'])) %>
+                                     
+
+</p>

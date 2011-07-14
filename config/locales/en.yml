@@ -1,0 +1,43 @@
+# English strings go here for Rails i18n
+en:
+  field_hours_in_day: "Number of hours in a day"
+  field_days_in_week: "Number of days in a week"
+  field_weeks_in_month: "Number of weeks in a month"
+  field_months_in_year: "Number of month in an year"
+
+  field_char_for_day: "Char for a day"
+  field_char_for_week: "Char for a week"
+  field_char_for_month: "Char for a month"
+  field_char_for_year: "Char for a year"
+
+  char_for_hour: "h"
+  char_for_day: "d"
+  char_for_week: "w"
+  char_for_month: "m"
+  char_for_year: "y"
+
+  hours: "hours"
+  hour: "hour"
+  days: "days"
+  day: "day"
+  weeks: "weeks"
+  week: "week"
+  months: "months"
+  month: "month"
+  years: "years"
+  year: "year"
+
+  field_estimated_time: "Hours by default"
+  field_estimated_default: "%{{unit}} by default"
+  field_time_entry_hours: "Time spent"
+  
+  label_settings_unit_default: "Default time unit"
+  label_estimated: "{{value}} {{unit}}"
+  
+  label_calculated_spent_hours: Calculated spent hours
+  label_divergent_hours: Divergent hours
+  label_remaining_hours: Remaining hours
+  label_spent_hours: Spent hours
+  
+  label_divergent_time: Divergent time
+  label_remaining_time: Remaining time
