@@ -1,3 +1,6 @@
 = advanced_issues
 
-Description goes here
+This plugin add some stuffs into issues.
+
+# Change time unit for time tracking (day, week...)
+
