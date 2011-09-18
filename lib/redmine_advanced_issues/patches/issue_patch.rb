@@ -35,9 +35,16 @@ module RedmineAdvancedIssues
           !spent_hours.nil? && !estimated_hours.nil? && spent_hours > estimated_hours
         end #spent_time_over_estimated?
 
+		# if the issue has some risk for an overdue
         def has_risk?
           (spent_time_over_estimated? || miss_time? || behind_schedule?) && !closed?
         end #has_risk
+		
+		# khim: Returns true if the issue will be late...
+		# khim: ((time_estimated - worked_time) / 7.5) > due_date - Date.today
+		def miss_time?
+		  !due_date.nil? && ((estimated_hours.to_f - spent_hours.to_f) / 7.5) > (due_date - Date.today)
+		end
 
         def estimated_days
           if !estimated_hours.nil? && !Setting.plugin_redmine_advanced_issues['hours_in_day'].nil?
@@ -51,20 +58,18 @@ module RedmineAdvancedIssues
 
         #TODO: refactoring
         def default_unit_time
-          case Setting.plugin_redmine_advanced_issues['default_unit']
-            when 'hours'
-              return l(:hours)
-            when 'days'
-              return l(:days)
-            when 'weeks'
-              return l(:weeks)
-            when 'months'
-              return l(:months)
-            when 'years'
-              return l(:years)
-            else
-              return l(:hours)
-            end
+			return RedmineAdvancedIssues::TimeManagement.getDefaultTimeUnit(Setting.plugin_redmine_advanced_issues['default_unit'])
+#          case Setting.plugin_redmine_advanced_issues['default_unit']
+#            when 'days'
+#              return l(:days)
+#            when 'weeks'
+#              return l(:weeks)
+#            when 'months'
+#              return l(:months)
+#            when 'years'
+#              return l(:years)
+#            end
+#            return l(:hours)
           end #default_unit_time
 
           def spent_time

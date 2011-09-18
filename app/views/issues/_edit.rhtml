@@ -20,12 +20,11 @@
         <% fields_for :time_entry, @time_entry, { :builder => TabularFormBuilder, :lang => current_language} do |time_entry| %>
         <div class="splitcontentleft">
 
-
-<p>
-  <label for="time_entry_hours"><%= l(:field_time_entry_hours) %></label>
-  <%= text_field_tag 'time_entry[hours]', @time_entry.time, :size => 6 %> <%= l(:field_estimated_default, :unit => @time_entry.default_unit_time) %>
-</p>
-
+		<p>
+		  <label for="time_entry_hours"><%= l(:field_time_entry_hours) %></label>
+		  <%= text_field_tag 'time_entry[hours]', @time_entry.time, :size => 6 %> 
+		  <%= l(:field_estimated_default, :unit => @time_entry.default_unit_time) %>
+		</p>
 
         </div>
         <div class="splitcontentright">

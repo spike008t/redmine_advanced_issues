@@ -41,3 +41,5 @@ fr:
   
   label_divergent_time: Temps dépassé
   label_remaining_time: Temps restant
+
+  label_warning_risk: [RISQUE]

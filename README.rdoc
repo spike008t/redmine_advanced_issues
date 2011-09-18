@@ -4,3 +4,9 @@ This plugin add some stuffs into issues.
 
 # Change time unit for time tracking (day, week...)
 
+TODO:
+
+# Write some test!
+# Refactoring some stuffs
+# Add more flexibility on time unit selection (per project and global)
+# Select the good time unit for more visibility

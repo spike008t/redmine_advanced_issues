@@ -22,7 +22,7 @@ Redmine::Plugin.register :redmine_advanced_issues do
 This is a plugin for Redmine, that add some advanced stuffs.
 Spent time columns, unit time customize
 '
-  version '0.0.2'
+  version '0.0.3'
   url 'http://blog.spikie.info/'
   author_url 'http://blog.spikie.info'
 
@@ -31,16 +31,16 @@ Spent time columns, unit time customize
 
   settings(:default => {
              'hours_in_day' => '7.4',
-             'char_for_day' => 'j',
+             'char_for_day' => 'd',
 
              'days_in_week' => '5',
-             'char_for_week' => 's',
+             'char_for_week' => 'w',
 
-             'days_in_month' => '21',
+             'weeks_in_month' => '21',
              'char_for_month' => 'm',
 
              'months_in_year' => '12',
-             'char_for_year' => 'a',
+             'char_for_year' => 'y',
 
              'default_unit' => 'hours',
 

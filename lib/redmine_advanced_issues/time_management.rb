@@ -51,6 +51,10 @@ module RedmineAdvancedIssues
 
     def TimeManagement.calculateHours(value, unit_time)
 
+		if value.nil?
+			return nil
+		end
+
       value = value.to_f
 
       return value if unit_time == 'hours'
@@ -94,6 +98,20 @@ module RedmineAdvancedIssues
       end #case
     end #def
 
+	def TimeManagement.getDefaultTimeUnit(unit)
+		case unit
+		when 'days'
+		  return I18n.t(:days)
+		when 'weeks'
+		  return I18n.t(:weeks)
+		when 'months'
+		  return I18n.t(:months)
+		when 'years'
+		  return I18n.t(:years)
+		end
+		return I18n.t(:hours)
+	end #def 
+	
   end #class
 
 end #module

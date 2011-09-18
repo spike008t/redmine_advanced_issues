@@ -1,5 +1,12 @@
 Changelog:
 
+09/18/2011 - v.0.0.3 : 
+- Fix bugs : 
+	- add methods "has_risk" and "miss_time"
+	- modify some templates/labels because that doesn't show the label up
+- Done:
+	- Modify show template and add label "[RISK]" to the issue where's a risk of overdue
+
 
 15/07/2011 - v.0.0.2 : 
 - Création initiale du projet
