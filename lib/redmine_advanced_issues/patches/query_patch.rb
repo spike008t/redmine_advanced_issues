@@ -1,3 +1,20 @@
+# Redmine advanced issues - Plugin improve time entry
+# Copyright (C) 2011  Tieu-Philippe Khim
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 module RedmineAdvancedIssues
   module Patches
     module QueryPatch
@@ -20,6 +37,11 @@ module RedmineAdvancedIssues
 				:caption => :label_calculated_spent_hours, 
 				:sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100))"
 			) unless columns.detect { |c| c.name == :calculated_spent_hours }
+
+			columns << QueryColumn.new(:calculated_spent_time, 
+				:caption => :label_calculated_spent_time, 
+				:sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100)) / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)}"
+			) unless columns.detect { |c| c.name == :calculated_spent_time }
 			
 			columns << QueryColumn.new(:divergent_hours, 
 				:caption => :label_divergent_hours, 
@@ -38,8 +60,8 @@ module RedmineAdvancedIssues
 			) unless columns.detect { |c| c.name == :remaining_hours }
 			
 			columns << QueryColumn.new(:remaining_time, 
-				:caption => :label_remaining_hours, 
-				:sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) - (IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100))  / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)}"
+				:caption => :label_remaining_time, 
+				:sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) - (IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100)) / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)}"
 			) unless columns.detect { |c| c.name == :remaining_time }
 			
 		  end #if

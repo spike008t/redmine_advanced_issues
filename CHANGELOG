@@ -1,5 +1,13 @@
 Changelog:
 
+v.0.0.4 :
+- Add some css classes on issues list
+	- "risk" => The issue has a risk to not finish on time 
+	- "miss_time" => The issue is late, and miss time to finish it on time
+	- "over_estimated" => The issue is over_estimated (over comsume)
+- Add a new column Calculated spent time => new column on issue list that show the calculated time
+- Fix bug : Timelog has value at "0.0" on the form if that value is null.
+
 09/18/2011 - v.0.0.3 : 
 - Fix bugs : 
 	- add methods "has_risk" and "miss_time"

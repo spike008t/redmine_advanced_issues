@@ -1,0 +1,13 @@
+/** Stylesheet for advanced_issues **/
+settings_hours_in_day {
+}
+
+/** Issue's row style when the issue miss time to finish **/
+table.issues tr.miss_time {
+	background-color: #f00;
+}
+
+/** Issue's row style when the issue has a risk **/
+table.issues tr.risk {
+	background-color: #fcc;
+}

@@ -39,6 +39,7 @@ en:
   label_remaining_hours: Remaining hours
   label_spent_hours: Spent hours
   
+  label_calculated_spent_time: Calculated spent time
   label_divergent_time: Divergent time
   label_remaining_time: Remaining time
   

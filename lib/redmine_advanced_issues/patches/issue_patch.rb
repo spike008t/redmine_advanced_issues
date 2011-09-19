@@ -1,3 +1,20 @@
+# Redmine advanced issues - Plugin improve time entry
+# Copyright (C) 2011  Tieu-Philippe Khim
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 require_dependency 'issue'
 
 require 'redmine_advanced_issues/time_management'
@@ -13,6 +30,7 @@ module RedmineAdvancedIssues
 
         base.class_eval do
           unloadable
+		  alias_method_chain :css_classes, :more_css
         end #base.class_eval
 
       end #self.include(base)
@@ -53,40 +71,44 @@ module RedmineAdvancedIssues
         end #estimated_days
 
         def estimated_time
-          return RedmineAdvancedIssues::TimeManagement.calculate estimated_hours, Setting.plugin_redmine_advanced_issues['default_unit']
+		  time = RedmineAdvancedIssues::TimeManagement.calculate estimated_hours, Setting.plugin_redmine_advanced_issues['default_unit']
+		  return nil if time.nil?
+		  return time.to_f
+          #return sprintf "%.2f %c", time.to_f, default_unit_time
         end #estimated_time
 
-        #TODO: refactoring
         def default_unit_time
-			return RedmineAdvancedIssues::TimeManagement.getDefaultTimeUnit(Setting.plugin_redmine_advanced_issues['default_unit'])
-#          case Setting.plugin_redmine_advanced_issues['default_unit']
-#            when 'days'
-#              return l(:days)
-#            when 'weeks'
-#              return l(:weeks)
-#            when 'months'
-#              return l(:months)
-#            when 'years'
-#              return l(:years)
-#            end
-#            return l(:hours)
-          end #default_unit_time
+		  return RedmineAdvancedIssues::TimeManagement.getDefaultTimeUnit(Setting.plugin_redmine_advanced_issues['default_unit'])
+        end #default_unit_time
 
-          def spent_time
-            time = spent_hours
-            return RedmineAdvancedIssues::TimeManagement.calculate spent_hours, Setting.plugin_redmine_advanced_issues['default_unit']
-          end #def
+        def spent_time
+          hours = spent_hours
+		  return nil if hours.nil?
+          time = RedmineAdvancedIssues::TimeManagement.calculate hours, Setting.plugin_redmine_advanced_issues['default_unit']
+		  return time.to_f
+		  #return sprintf "%.2f %c", time.to_f, default_unit_time
+        end #def
 		  
 		  def calculated_spent_hours
 		    return self_and_descendants.sum("estimated_hours * done_ratio / 100").to_f || 0.0
 		  end #calculated_spent_hours
+		  
+		  def calculated_spent_time
+		    time = RedmineAdvancedIssues::TimeManagement.calculate calculated_spent_hours, Setting.plugin_redmine_advanced_issues['default_unit']
+		    return nil if time.nil?
+			return time.to_f
+            #return sprintf "%.2f %c", time.to_f, default_unit_time
+		  end #calculated_spent_time
 		  
 		  def divergent_hours
 		    return spent_hours - calculated_spent_hours
 		  end #divergent_hours
 		  
 		  def divergent_time
-		    return RedmineAdvancedIssues::TimeManagement.calculate divergent_hours, Setting.plugin_redmine_advanced_issues['default_unit']
+		    time = RedmineAdvancedIssues::TimeManagement.calculate divergent_hours, Setting.plugin_redmine_advanced_issues['default_unit']
+			return nil if time.nil?
+			return time.to_f
+			#return sprintf "%.2f %c", time.to_f, default_unit_time
 		  end #divergent_time
 		  
 		  def remaining_hours
@@ -94,9 +116,19 @@ module RedmineAdvancedIssues
 		  end #remaining_hours
 		  
 		  def remaining_time
-		    return RedmineAdvancedIssues::TimeManagement.calculate remaining_hours, Setting.plugin_redmine_advanced_issues['default_unit']
+		    time = RedmineAdvancedIssues::TimeManagement.calculate remaining_hours, Setting.plugin_redmine_advanced_issues['default_unit']
+			return nil if time.nil?
+			return time.to_f
+			#return sprintf "%.2f %c", time.to_f, default_unit_time
 		  end #remaining_time
 
+		  def css_classes_with_more_css
+			s = css_classes_without_more_css
+			s << ' risk' if has_risk?
+			s << ' miss_time' if miss_time?
+			s << ' over_estimated' if spent_time_over_estimated?
+			return s
+		  end #css_classes
       end #InstanceMethods
 
     end #IssuePatch

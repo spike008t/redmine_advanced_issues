@@ -1,3 +1,7 @@
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'advanced_issues.css', :plugin => 'redmine_advanced_issues' %>
+<% end %>
+
 <%= render :partial => 'action_menu' %>
 
 <h2><%= l(:label_warning_risk) if @issue.has_risk? %> <%= issue_heading(@issue) %></h2>

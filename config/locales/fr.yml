@@ -34,11 +34,12 @@ fr:
   label_settings_unit_default: "Unité de temps par défaut"
   label_estimated: "%{value} %{unit}"
 
-  label_calculated_spent_hours: Heures passées calculés
+  label_calculated_spent_hours: Heures passées calculées
   label_divergent_hours: Heures dépassées
   label_remaining_hours: Heures restantes
   label_spent_hours: Heures passées
   
+  label_calculated_spent_time: Temps passés calculés
   label_divergent_time: Temps dépassé
   label_remaining_time: Temps restant
 
