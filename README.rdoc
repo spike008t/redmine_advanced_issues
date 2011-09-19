@@ -1,7 +1,5 @@
 = advanced_issues
-
-This plugin add some stuffs into issues.
-
+This plugin add some stuffs for issues.
 * Change time unit for time tracking (day, week...)
 * Set a time unit when insert time by taping a char at the end (5d => 5 * nb_hours_on_day)
 * Add some columns into the issues list
@@ -26,10 +24,11 @@ Don't forget that the folder name of the plugin must be "redmine_advanced_issues
 You can send me a mail at : khim.tieu.philippe@gmail.com
 Or react at (http://www.redmine.org/issues/6833)
 
-== TODO:
-
+= TODO:
 * Write some test!
 * Refactoring some stuffs
+
+= FEATURES:
 * Add more flexibility on time unit selection (per project and global)
-* Select the good time unit for more visibility
-* a fresh import task that support CSV, XLS (maybe)
+* Select the good time unit to print for more visibility (if nb_days > nb_days_per_week, then print week unless days)
+* a fresh import task that support CSV, XLS (maybe a fork of redmine_importer)
