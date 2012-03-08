@@ -45,20 +45,7 @@ module RedmineAdvancedIssues
 
         #TODO: refactoring
         def default_unit_time
-          case Setting.plugin_redmine_advanced_issues['default_unit']
-            when 'hours'
-              return l(:hours)
-            when 'days'
-              return l(:days)
-            when 'weeks'
-              return l(:weeks)
-            when 'months'
-              return l(:months)
-            when 'years'
-              return l(:years)
-            else
-              return l(:hours)
-          end #case
+		  return RedmineAdvancedIssues::TimeManagement.getDefaultTimeUnit(Setting.plugin_redmine_advanced_issues['default_unit'])
         end #default_unit_time
       end #InstanceMethods
     end #TimeEntryPatch

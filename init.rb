@@ -39,7 +39,7 @@ Redmine::Plugin.register :redmine_advanced_issues do
 This is a plugin for Redmine, that add some advanced stuffs.
 Spent time columns, unit time customize
 '
-  version '0.0.3'
+  version '0.0.4'
   url 'http://blog.spikie.info/'
   author_url 'http://blog.spikie.info'
 
@@ -53,7 +53,7 @@ Spent time columns, unit time customize
              'days_in_week' => '5',
              'char_for_week' => 'w',
 
-             'weeks_in_month' => '21',
+             'weeks_in_month' => '4',
              'char_for_month' => 'm',
 
              'months_in_year' => '12',

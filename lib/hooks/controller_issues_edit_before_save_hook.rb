@@ -24,7 +24,6 @@ module Hooks
     def controller_issues_edit_before_save(context={})
 
       if context[:params] && context[:params][:issue] && context[:params][:issue][:estimated_hours].present?
-
         value = context[:params][:issue][:estimated_hours]
         time_unit = ""
 
@@ -38,9 +37,25 @@ module Hooks
             context[:issue][:estimated_hours] = RedmineAdvancedIssues::TimeManagement.calculateHours value.to_f, time_unit
         end #if
 
-      return ''
+      end #if
+
+      if context[:time_entry] && context[:time_entry][:hours].present?
+        value = context[:time_entry][:hours]
+        time_unit = ""
+
+        if value.to_s =~ /^([0-9]+)\s*[a-z]{1}$/
+          time_unit = RedmineAdvancedIssues::TimeManagement.getUnitTimeFromChar value.to_s[-1, 1]
+        else
+          time_unit = Setting.plugin_redmine_advanced_issues['default_unit']
+        end #if
+
+        if !time_unit.empty?
+            context[:time_entry][:hours] = RedmineAdvancedIssues::TimeManagement.calculateHours value.to_f, time_unit
+        end #if
 
       end #if
+
+	  return ''
 
     end #controller_issues_edit_before_save
 

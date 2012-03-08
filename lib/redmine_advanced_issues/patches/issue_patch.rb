@@ -31,6 +31,7 @@ module RedmineAdvancedIssues
         base.class_eval do
           unloadable
 		  alias_method_chain :css_classes, :more_css
+		  #alias_method_chain :save_issue_with_child_records, :time_entry_record
         end #base.class_eval
 
       end #self.include(base)
@@ -61,7 +62,7 @@ module RedmineAdvancedIssues
 		# khim: Returns true if the issue will be late...
 		# khim: ((time_estimated - worked_time) / 7.5) > due_date - Date.today
 		def miss_time?
-		  !due_date.nil? && ((estimated_hours.to_f - spent_hours.to_f) / 7.5) > (due_date - Date.today)
+		  !due_date.nil? && ((estimated_hours.to_f - spent_hours.to_f) / Setting.plugin_redmine_advanced_issues['hours_in_day'].to_f) > (due_date - Date.today)
 		end
 
         def estimated_days
@@ -129,6 +130,17 @@ module RedmineAdvancedIssues
 			s << ' over_estimated' if spent_time_over_estimated?
 			return s
 		  end #css_classes
+		  
+		  ## 
+		  # 
+		  ##
+		  def save_issue_with_child_records_with_time_entry_record(params, existing_time_entry=nil)
+			if params[:time_entry] && params[:time_entry][:hours].present?
+			  params[:time_entry][:hours] = RedmineAdvancedIssues::TimeManagement.calculate params[:time_entry][:hours], Setting.plugin_redmine_advanced_issues['default_unit']
+			end
+			save_issue_with_child_records_without_time_entry_record(params, existing_time_entry)
+		  end #save_issue_with_child_records_with_time_entry_record
+		  
       end #InstanceMethods
 
     end #IssuePatch

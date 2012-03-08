@@ -45,7 +45,7 @@ module RedmineAdvancedIssues
 			
 			columns << QueryColumn.new(:divergent_hours, 
 				:caption => :label_divergent_hours, 
-				:sortable => "((select sum(hours) from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id = #{Issue.table_name}.id) - (IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100s))"
+				:sortable => "((select sum(hours) from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id = #{Issue.table_name}.id) - (IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100))"
 			) unless columns.detect { |c| c.name == :divergent_hours }
 			
 			
