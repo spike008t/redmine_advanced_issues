@@ -98,7 +98,7 @@ module RedmineAdvancedIssues
 		    time = RedmineAdvancedIssues::TimeManagement.calculate calculated_spent_hours, Setting.plugin_redmine_advanced_issues['default_unit']
 		    return nil if time.nil?
 			return time.to_f
-            #return sprintf "%.2f %c", time.to_f, default_unit_time
+            		#return sprintf "%.2f %c", time.to_f, default_unit_time
 		  end #calculated_spent_time
 		  
 		  def divergent_hours
@@ -113,7 +113,14 @@ module RedmineAdvancedIssues
 		  end #divergent_time
 		  
 		  def remaining_hours
-			return self_and_descendants.sum("estimated_hours - (estimated_hours * done_ratio / 100)").to_f || 0.0
+			#return self_and_descendants.sum("estimated_hours - (estimated_hours * done_ratio / 100)").to_f || 0.0
+			# Thank to froed for that.
+			if self.leaves.count > 0
+			    rHours = self.leaves.sum("estimated_hours - (estimated_hours * done_ratio / 100)").to_f || 0.0
+			else
+			    rHours = self_and_descendants.sum("estimated_hours - (estimated_hours * done_ratio / 100)").to_f || 0.0
+			end
+			return rHours
 		  end #remaining_hours
 		  
 		  def remaining_time
