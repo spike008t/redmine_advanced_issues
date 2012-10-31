@@ -16,21 +16,38 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 require 'redmine'
-require 'dispatcher'
+require 'dispatcher' unless Rails::VERSION::MAJOR >= 3
+
+
+if Rails::VERSION::MAJOR >= 3
+
+::Rails.logger.info 'Starting advenced Issues Plugin for RedMine'
+  ActionDispatch::Callbacks.to_prepare do
+
+    # add time unit conversion
+    Issue.send(:include, RedmineAdvancedIssues::Patches::IssuePatch) unless Issue.included_modules.include? RedmineAdvancedIssues::Patches::IssuePatch  
+    TimeEntry.send(:include, RedmineAdvancedIssues::Patches::TimeEntryPatch) unless TimeEntry.included_modules.include? RedmineAdvancedIssues::Patches::TimeEntryPatch
+
+    # add spent time column
+    Query.send(:include, RedmineAdvancedIssues::Patches::QueryPatch) unless Query.include?(RedmineAdvancedIssues::Patches::QueryPatch)
+    QueriesHelper.send(:include, RedmineAdvancedIssues::Patches::QueriesHelperPatch) unless QueriesHelper.include?(RedmineAdvancedIssues::Patches::QueriesHelperPatch)
+  
+  end #ActionDispatch
+else #Rails::VERSION
 
 RAILS_DEFAULT_LOGGER.info 'Starting advenced Issues Plugin for RedMine'
+  Dispatcher.to_prepare do
 
-Dispatcher.to_prepare do
+    # add time unit conversion
+    Issue.send(:include, RedmineAdvancedIssues::Patches::IssuePatch) unless Issue.included_modules.include? RedmineAdvancedIssues::Patches::IssuePatch  
+    TimeEntry.send(:include, RedmineAdvancedIssues::Patches::TimeEntryPatch) unless TimeEntry.included_modules.include? RedmineAdvancedIssues::Patches::TimeEntryPatch
 
-  # add time unit conversion
-  Issue.send(:include, RedmineAdvancedIssues::Patches::IssuePatch) unless Issue.included_modules.include? RedmineAdvancedIssues::Patches::IssuePatch  
-  TimeEntry.send(:include, RedmineAdvancedIssues::Patches::TimeEntryPatch) unless TimeEntry.included_modules.include? RedmineAdvancedIssues::Patches::TimeEntryPatch
-
-  # add spent time column
-  Query.send(:include, RedmineAdvancedIssues::Patches::QueryPatch) unless Query.include?(RedmineAdvancedIssues::Patches::QueryPatch)
-  QueriesHelper.send(:include, RedmineAdvancedIssues::Patches::QueriesHelperPatch) unless QueriesHelper.include?(RedmineAdvancedIssues::Patches::QueriesHelperPatch)
+    # add spent time column
+    Query.send(:include, RedmineAdvancedIssues::Patches::QueryPatch) unless Query.include?(RedmineAdvancedIssues::Patches::QueryPatch)
+    QueriesHelper.send(:include, RedmineAdvancedIssues::Patches::QueriesHelperPatch) unless QueriesHelper.include?(RedmineAdvancedIssues::Patches::QueriesHelperPatch)
   
-end
+  end #Dispatcher
+end #Rails::VERSION
 
 Redmine::Plugin.register :redmine_advanced_issues do
   name 'Redmine Advanced Issues plugin'
@@ -39,7 +56,7 @@ Redmine::Plugin.register :redmine_advanced_issues do
 This is a plugin for Redmine, that add some advanced stuffs.
 Spent time columns, unit time customize
 '
-  version '0.0.4'
+  version '0.0.5'
   url 'http://blog.spikie.info/'
   author_url 'http://blog.spikie.info'
 
