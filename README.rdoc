@@ -19,6 +19,8 @@ You can skip 'rake' command as there are no database migration files.
 
 Don't forget that the folder name of the plugin must be "redmine_advanced_issues".
 
+This branch work with redmine v2.1.x (tested on 2.1.2)
+
 == Reports bug?
 
 You can send me a mail at : khim.tieu.philippe@gmail.com
