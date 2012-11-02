@@ -1,0 +1,49 @@
+# Simplified Chinese strings go here for Rails i18n
+# Author: Steven.W
+# Based on file: en.yml
+
+zh:
+  field_hours_in_day: "每日工时数"
+  field_days_in_week: "每周工作天数"
+  field_weeks_in_month: "每月工作周数"
+  field_months_in_year: "每年工作月数"
+
+  field_char_for_day: "日对应编码"
+  field_char_for_week: "周对应编码"
+  field_char_for_month: "月对应编码"
+  field_char_for_year: "年对应编码"
+
+  char_for_hour: "h"
+  char_for_day: "d"
+  char_for_week: "w"
+  char_for_month: "m"
+  char_for_year: "y"
+
+  hours: "小时"
+  hour: "小时"
+  days: "天"
+  day: "天"
+  weeks: "周"
+  week: "周"
+  months: "月"
+  month: "月"
+  years: "年"
+  year: "年"
+
+  field_estimated_time: "默认小时"
+  field_estimated_default: "默认单位 %{unit}"
+  field_time_entry_hours: "已用时"
+  
+  label_settings_unit_default: "默认时间单位"
+  label_estimated: "%{value} %{unit}"
+  
+  label_calculated_spent_hours: 已用时
+  label_divergent_hours: 偏差时间
+  label_remaining_hours: 剩时
+  label_spent_hours: 已用时
+  
+  label_calculated_spent_time: 已用时
+  label_divergent_time: 偏差时间
+  label_remaining_time: 剩时
+  
+  label_warning_risk: [风险]
