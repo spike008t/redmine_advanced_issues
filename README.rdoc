@@ -3,14 +3,14 @@ This plugin add some stuffs for issues.
 * Change time unit for time tracking (day, week...)
 * Set a time unit when insert time by taping a char at the end (5d => 5 * nb_hours_on_day)
 * Add some columns into the issues list
-** Spent hours
-** Spent time 
-** Calculated spent hours 
-** Calculated spent time 
-** divergent hours : spent_hours - calculated_spent_hours
-** divergent time
-** remaining hours : estimated_hours - (estimated_hours * done_ratio / 100)
-** remaining time
+* * Spent hours
+* * Spent time 
+* * Calculated spent hours 
+* * Calculated spent time 
+* * divergent hours : spent_hours - calculated_spent_hours
+* * divergent time
+* * remaining hours : estimated_hours - (estimated_hours * done_ratio / 100)
+* * remaining time
 
 == Install
 
