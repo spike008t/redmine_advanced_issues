@@ -3,19 +3,23 @@ This plugin add some stuffs for issues.
 * Change time unit for time tracking (day, week...)
 * Set a time unit when insert time by taping a char at the end (5d => 5 * nb_hours_on_day)
 * Add some columns into the issues list
-* * Spent hours
-* * Spent time 
-* * Calculated spent hours 
-* * Calculated spent time 
-* * divergent hours : spent_hours - calculated_spent_hours
-* * divergent time
-* * remaining hours : estimated_hours - (estimated_hours * done_ratio / 100)
-* * remaining time
+** Spent hours
+** Spent time 
+** Calculated spent hours 
+** Calculated spent time 
+** divergent hours : spent_hours - calculated_spent_hours
+** divergent time
+** remaining hours : estimated_hours - (estimated_hours * done_ratio / 100)
+** remaining time
 
 == Install
 
 This plugin needs to be installed same as the Redmine instruction for plugins describes [http://www.redmine.org/wiki/1/Plugins].
 You can skip 'rake' command as there are no database migration files.
+
+The master branch will be synchronize with the master branch of redmine.
+
+If you want to install this plugin on an older version, please use the appropriate branch (eg: 1.x or 2.x).
 
 Don't forget that the folder name of the plugin must be "redmine_advanced_issues".
 
