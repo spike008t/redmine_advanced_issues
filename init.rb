@@ -57,7 +57,7 @@ This is a plugin for Redmine, that add some advanced stuffs.
 Only compatible with redmine 2.x
 Spent time columns, unit time customize
 '
-  version '0.2.0'
+  version '0.4.0'
   url 'http://blog.spikie.info/'
   author_url 'http://blog.spikie.info'
 
