@@ -1,24 +1,28 @@
 Changelog:
 
+2014/09/16 v0.0.5:
+
+- Add compatibility with redmine 2.1 (thank you to ricard33)
+
 08/03/2012 v.0.0.4 :
 - Add some css classes on issues list
-	- "risk" => The issue has a risk to not finish on time 
+	- "risk" => The issue has a risk to not finish on time
 	- "miss_time" => The issue is late, and miss time to finish it on time
 	- "over_estimated" => The issue is over_estimated (over comsume)
 - Add a new column Calculated spent time => new column on issue list that show the calculated time
 - Fix bug : Timelog has value at "0.0" on the form if that value is null.
 
-18/09/2011 - v.0.0.3 : 
-- Fix bugs : 
+18/09/2011 - v.0.0.3 :
+- Fix bugs :
 	- add methods "has_risk" and "miss_time"
 	- modify some templates/labels because that doesn't show the label up
 - Done:
 	- Modify show template and add label "[RISK]" to the issue where's a risk of overdue
 
-15/07/2011 - v.0.0.2 : 
-- Création initiale du projet
-- Possibilité d'affichage des jours
+15/07/2011 - v.0.0.2 :
+- Crï¿½ation initiale du projet
+- Possibilitï¿½ d'affichage des jours
 
-01/07/2011 - v.0.0.1 : 
-- Création initiale du projet
-- Possibilité d'affichage des jours
+01/07/2011 - v.0.0.1 :
+- Crï¿½ation initiale du projet
+- Possibilitï¿½ d'affichage des jours
